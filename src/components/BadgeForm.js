@@ -1,18 +1,11 @@
 import React from 'react';
 
 class BadgeForm extends React.Component {
-  handeClick = e => {
-  }
-
-  handleSubmint = e => {
-    e.preventDefault();
-  }
-
   render() {
     return (
       <React.Fragment>
         <h1>New Attendant</h1>
-        <form onSubmit={this.handleSubmint}>
+        <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label>Firs Name</label>
             <input 
@@ -65,8 +58,7 @@ class BadgeForm extends React.Component {
           </div>
 
           <button 
-            // type='button'
-            onClick={this.handeClick} 
+            onClick={this.props.onClick} 
             className="btn btn-success">
             Save
           </button>
