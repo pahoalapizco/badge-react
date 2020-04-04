@@ -3,8 +3,7 @@ import React from 'react';
 class BadgeForm extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <h1>New Attendant</h1>
+      <React.Fragment>       
         <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label>Firs Name</label>
@@ -17,7 +16,7 @@ class BadgeForm extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label>Las Name</label>
+            <label>Last Name</label>
             <input 
               onChange={this.props.onChange}
               className="form-control" 
@@ -62,6 +61,8 @@ class BadgeForm extends React.Component {
             className="btn btn-success">
             Save
           </button>
+
+          {this.props.error && (<p className="text-danger">{this.props.error.message}</p>)}
         </form>
       </React.Fragment>
     )

@@ -1,38 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style/BadgesList.css'
+
+import './style/BadgesList.css';
+
+class BadgesListItem extends React.Component {
+  render() {
+    return (
+      <div className="BadgesListItem">
+        <img
+          className="BadgesListItem__avatar"
+          src={this.props.badge.avatarUrl}
+          alt={`${this.props.badge.firstName} ${this.props.badge.lastName}`}
+        />
+        <div>
+          <strong>
+            {this.props.badge.firstName} {this.props.badge.lastName}
+          </strong>
+          <div className="Twitter__name">
+            <span className="Twitter__logo"></span>@{this.props.badge.twitter}
+          </div>
+          {this.props.badge.jobTitle}
+        </div>
+      </div>
+    );
+  }
+}
 
 class BadgesList extends React.Component {
   render() {
-    if(this.props.badges.length === 0) {
-      return (
-        <React.Fragment>
-          <h3>No badges were found</h3>
-          <Link className="btn btn-success" to="/badges/new">
-            Create new badge
-          </Link>
-        </React.Fragment>
-      )
-    }
-
-    return(
-      <ul className="list-unstyled BadgesList">
-        {this.props.badges.map(badge => {
-         return( 
-          <li key={badge.id} className="BadgesListItem">
-          <img src={badge.avatarUrl} alt=""className="BadgesListItem__avatar"/>
-          <div>
-             <div><strong>{badge.firstName} {badge.lastName}</strong></div>
-             <div className="Twitter__name">
-                <span className="Twitter__logo"></span>@{badge.twitter}
-             </div>
-             <div>{badge.jobTitle}</div>
-          </div>
-       </li>
-          )
-        })}
-      </ul>
-    )
+    return (
+      <div className="BadgesList">
+        <ul className="list-unstyled">
+          {this.props.badges.map(badge => {
+            return (
+              <li key={badge.id}>
+                <Link 
+                  className="text-reset text-decoration-none" 
+                  to={`/badges/${badge.id}/edit`}>
+                  <BadgesListItem badge={badge} />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
   }
 }
 
