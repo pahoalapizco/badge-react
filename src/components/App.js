@@ -5,7 +5,7 @@ import BadgesNew from './../pages/BadgeNew';
 import NotFound from './../pages/NotFound';
 import BadgeHome from './../pages/BadgeHome';
 import BadgeEdit from './../pages/BadgeEdit';
-import BadgeDetails from './../pages/BadgeDetails';
+import BadgeDetails from './../pages/BadgeDetailsContainer';
 import Layout from './Layout';
 
 const App = () => {
