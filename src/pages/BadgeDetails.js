@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Badge from '../components/Badge';
+import DeleteBadgeModal from '../components/DeleteBadgeModal';
 import ConfLogo from '../images/platziconf-logo.svg';
 
 import './styles/BadgeDetails.css';
 
-const BadgeDetails = ({ badge }) => {
+const BadgeDetails = ({ badge, onCloseModal, onOpenModal, modalIsOpen, onDeleteBadge }) => {
   return (
     <React.Fragment>
       <div className="BadgeDetails__hero">
@@ -39,7 +40,12 @@ const BadgeDetails = ({ badge }) => {
                 <Link className="btn btn-success mb-4" to={`/badges/${badge.id}/edit`}> Edit </Link>
               </div>
               <div>
-                <button className="btn btn-danger"> Delete </button>
+                <button onClick={onOpenModal} className="btn btn-danger"> Delete </button>
+                <DeleteBadgeModal 
+                  isOpen={modalIsOpen}
+                  onClose={onCloseModal}
+                  onDeleteBadge={onDeleteBadge}
+                />  
               </div>
             </div>
           </div>
